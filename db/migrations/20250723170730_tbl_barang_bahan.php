@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class TblBarang extends AbstractMigration
+final class TblBarangBahan extends AbstractMigration
 {
     /**
      * Change Method.
@@ -19,12 +19,9 @@ final class TblBarang extends AbstractMigration
      */
     public function change(): void
     {
-        $this->table('barang')
-            ->addColumn('kode', 'string')->addIndex(['kode'], ['unique' => true])
-            ->addColumn('nama', 'string')
-            ->addColumn('harga', 'decimal', ['precision' => 10, 'scale' => 2])
-            ->addColumn('deskripsi', 'text', ['null' => true])
-            ->addTimestamps()
-            ->create();
+        $this->table('tbl_barang_bahan')
+            ->addColumn('barang_kode', 'string')
+            ->addColumn('bahan_kode', 'string')
+            ->create(); 
     }
 }

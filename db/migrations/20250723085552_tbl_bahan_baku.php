@@ -19,17 +19,9 @@ final class TblBahanBaku extends AbstractMigration
      */
     public function change(): void
     {
-        $this->table('bahan_baku')
-            ->addColumn('kode', 'string')
+        $this->table('tbl_bahan_baku')
+            ->addColumn('kode', 'string')->addIndex(['kode'], ['unique' => true])
             ->addColumn('nama', 'string')
-            ->addColumn('stok', 'integer')
-            ->addColumn('harga', 'decimal', ['precision' => 10, 'scale' => 2])
-            ->addColumn('supplier', 'string')
-            ->addColumn('barang_id', 'integer', ['signed' => true])
-            ->addForeignKey('barang_id', 'tbl_barang', 'id', ['delete' => 'NO_ACTION', 'update' => 'NO_ACTION'])
-            // ->addForeignKey('barang_id', 'barang', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('barang_kode', 'string')
-            ->addForeignKey('barang_kode', 'barang', 'kode')
             ->addTimestamps()
             ->create();
     }
