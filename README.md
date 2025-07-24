@@ -8,26 +8,7 @@ Aplikasi manajemen inventaris menggunakan **PHP Native** dengan sistem **routing
 - CRUD Bahan Baku
 - Routing dinamis tanpa query string
 - Tampilan sederhana menggunakan TailwindCSS (CDN)
-- Database migration menggunakan [Phinx](https://book.cakephp.org/phinx/0/en/)
-
----
-
-## Struktur Folder
-
-```
-inventory-app/
-├── action/
-├── config/
-│   └── connection.php
-├── db/
-│   ├── migrations/
-│   └── Seeds/
-├── layouts/
-│   ├── barang.php
-│   └── bahan_baku.php
-├── composer.json
-├── phinx.php      ← konfigurasi untuk Phinx
-```
+- Database migration menggunakan [Phinx](https://phinx.org/)
 
 ---
 
@@ -36,37 +17,25 @@ inventory-app/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/namauser/inventory-app.git
+git clone https://github.com/shscar/Inventory-Barang
 cd inventory-app
 ```
 
 ### 2. Install Dependency Composer
 
-Pastikan sudah terinstall Composer, lalu jalankan:
+Pastikan [Composer](https://getcomposer.org/) sudah terinstall, lalu jalankan:
 
 ```bash
 composer install
 ```
 
-### 3. Konfigurasi Database
-
-`copy config/test.connetion.php config/connetion.php`
-
-Sesuaikan dengan database:
-
-```php
-return [
-    'host'     => 'localhost',
-    'name'     => 'nama_database',
-    'user'     => 'root',
-    'pass'     => '',
-    'charset'  => 'utf8mb4',
-];
-```
-
-### 4. Setup Phinx Migration
+### 3. Setup Phinx Migration
 
 #### a. Konfigurasi `phinx.php`
+
+```bash
+vendor/bin/phinx init .
+```
 
 Contoh konfigurasi:
 
@@ -105,15 +74,52 @@ vendor/bin/phinx seed:run -v
 
 ---
 
-## Menjalankan Aplikasi
+### 4. Konfigurasi Database
 
-### Dengan PHP built-in server
+```bash
+cp config/test.connection.php config/connection.php
+```
+
+Sesuaikan dengan database:
+
+```php
+return [
+    'host'     => 'localhost',
+    'name'     => 'nama_database',
+    'user'     => 'root',
+    'pass'     => '',
+    'charset'  => 'utf8mb4',
+];
+```
+
+### 5. Menjalankan Aplikasi
+
+#### Dengan PHP built-in server
 
 ```bash
 php -S localhost:800
 ```
 
 Lalu akses di browser: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## Struktur Folder
+
+```
+inventory-app/
+├── action/
+├── config/
+│   └── connection.php
+├── db/
+│   ├── migrations/
+│   └── Seeds/
+├── layouts/
+│   ├── barang.php
+│   └── bahan_baku.php
+├── composer.json
+├── phinx.php      ← konfigurasi untuk Phinx
+```
 
 ---
 
@@ -134,3 +140,9 @@ Menggunakan **TailwindCSS** CDN di dalam layout:
 ```html
 <script src="https://cdn.tailwindcss.com"></script>
 ```
+
+---
+
+## Kontak
+
+Jika memiliki pertanyaan, masukan, atau dukungan, silakan hubungi saya di [ahmadghozali87621@gmail.com](https://github.com/shscar/Terms-of-Reference-TOR.git)
